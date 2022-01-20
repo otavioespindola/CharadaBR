@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Import do Bootstrap NPM -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Import do CSS local -->
+    <link rel="stylesheet" href="/css/estilo.css">
+    <title>Charada 01</title>
+</head>
+
+<body>
+    <!-- Colocando todo o conteúdo em um container para ser responsível com as classes do Bootstrap  -->
+    <div class="container container-fluid ">
+        <!-- título principal -->
+        <h1 class="tituloPrincipal">Pergunta 01</h1>
+
+        <div class="card" style="width: 100%">
+            <!-- Figura -->
+            <figure class="figure">
+                <img src="/img/imgPergunta01.jpg" class="figure-img img-fluid rounded" alt="Um dachshund no mato">
+                <figcaption class="figure-caption">Tente no diminutivo</figcaption>
+            </figure>      
+            <!-- corpo  -->
+            <div class="card-body ">              
+              <p class="card-text">Esse cãozinho é bem popular.</p>              
+              <input class="form-control mb-3" id="inputResposta" type="text" placeholder="Digite sua resposta aqui" aria-label="area de resposta">
+              <!-- Função do "onclick" confere a respota antes de redirecionar para próxima página  -->
+              <a href="#" class="btn btn-primary" onclick="confereResposta()">Responder</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function confereResposta() {
+            respostaCerta = "salsichinha"
+            const respostaDoUsuario = document.getElementById("inputResposta");
+            if (respostaDoUsuario.value === respostaCerta) {
+                // redirecionar para página 2
+                window.location.href = '/pergunta02.html'
+            } else {
+                alert("Resposta errada, tente outra vez.");
+                respostaDoUsuario.value = "";
+                respostaDoUsuario.focus();
+            }
+            
+        }
+    </script>
+    
+</body>
+</html>

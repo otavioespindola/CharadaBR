@@ -9,11 +9,15 @@
     position: relative;   
     margin-bottom: 0rem;      
 }
+.figure-img {
+    margin-bottom: 0rem;
+}
 
+/* tentativa de possicionar o elemnto no centro da imagem */
 .figure .figure-caption {
     position: absolute;    
     top: 50%;
-    right: 50%;
+    left: 30%;
     text-align: center;
     color: rgba(0,0,0,0);
     transition: all 2s;
