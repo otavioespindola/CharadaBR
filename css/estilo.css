@@ -2,3 +2,24 @@
     display: block;
     text-align: center;
 }
+
+.figure {
+    padding: 1rem 1rem 0rem 1rem;
+    display: inline-block;
+    position: relative;   
+    margin-bottom: 0rem;      
+}
+
+.figure .figure-caption {
+    position: absolute;    
+    top: 50%;
+    right: 50%;
+    text-align: center;
+    color: rgba(0,0,0,0);
+    transition: all 2s;
+}
+
+.figure-caption:hover {
+    color: rgba(0,0,0,0.5);
+
+}
