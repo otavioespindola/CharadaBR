@@ -9,12 +9,12 @@ respostaDoUsuario.addEventListener("keypress", (e) => {
     }
 });   
 
-function confereResposta() {
-        
+// ESSA FUNÇÃO NÃO ESTÁ FUNCIONANDO - falta descobrir como alterar a variável faseAtual dentro da função
+function confereResposta() {        
     // uso do método toLowerCase para fazer a resposta ser case insentive
     if (respostaDoUsuario.value.toLowerCase() === respostaDaFase.toLowerCase()) {
-        // redirecionar para página 2
-        window.location.href = './pergunta02.html'
+        // redirecionar para pergunta 2
+        faseAtual = charada.proximaFase;        
     } else {
         alert("Resposta errada, tente outra vez.");
         respostaDoUsuario.value = "";
@@ -32,6 +32,7 @@ let arrayDeCharadas = [
         titulo: "Pergunta 01",
         resposta: "salsichinha",
         fase: 1,
+        proximaFase: 2,
     },
     {
         id: 45,
@@ -42,6 +43,8 @@ let arrayDeCharadas = [
         titulo: "Pergunta 02",
         resposta: "arranha-céu",
         fase: 2,
+        proximaFase: 3,
+
     },
     {
         id: 55,
@@ -52,10 +55,12 @@ let arrayDeCharadas = [
         titulo: `Pergunta 03`,
         resposta: "Coringa",
         fase: 3,
+        proximaFase: 1,
+
     }
 ]
 
-let faseAtual = 1;
+let faseAtual = 3;
 
 //filtrando pela código da fase, que será também o fator que ordenará em que aparecerá no game
 let charada = arrayDeCharadas.filter(function (e) {
