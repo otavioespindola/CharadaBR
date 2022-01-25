@@ -1,0 +1,103 @@
+// ESSA FUNÇÃO NÃO ESTÁ FUNCIONANDO - falta descobrir como alterar a variável faseAtual dentro da função
+function confereResposta(respostaDoUsuario, charada) {
+    // uso do método toLowerCase para fazer a resposta ser case insentive
+    limpaRespostaDoUsuario();
+    if (respostaDoUsuario.toLowerCase() === charada.resposta.toLowerCase()) {
+        return atualizaPagina(charada.proximaFase)
+    } else {
+        alert("Resposta errada, tente outra vez.");
+        return charada;
+    }
+}
+
+function limpaRespostaDoUsuario() {
+    let inputDeRespostaDoUsuario = document.getElementById('inputResposta')
+    inputDeRespostaDoUsuario.value = "";
+    inputDeRespostaDoUsuario.focus();
+}
+
+function atualizaPagina(faseAtual) {
+    // array com as propriedades da página
+    let arrayDeCharadas = [
+        {
+            id: 35,
+            imagem: "./img/imgPergunta01.jpg",
+            alt: "Um dachshund no mato",
+            texto: "Esse cãozinho é bem popular.",
+            dica: "Tente no diminutivo",
+            titulo: "Pergunta 01",
+            resposta: "salsichinha",
+            fase: 1,
+            proximaFase: 2,
+        },
+        {
+            id: 45,
+            imagem: "./img/imgPergunta02.jpg",
+            alt: "Um prédio muito alto",
+            texto: "Se tivesse unhas",
+            dica: "Hifen e acentos importam",
+            titulo: "Pergunta 02",
+            resposta: "arranha-céu",
+            fase: 2,
+            proximaFase: 3,
+
+        },
+        {
+            id: 55,
+            imagem: "./img/imgpergunta03.jpg",
+            alt: "Um palhaço",
+            texto: "Um palhaço pode ser mal?",
+            dica: "DC",
+            titulo: `Pergunta 03`,
+            resposta: "Coringa",
+            fase: 3,
+            proximaFase: 1,
+
+        }
+    ]
+
+    //filtrando pela código da fase, que será também o fator que ordenará em que aparecerá no game
+    let charada = arrayDeCharadas.filter(function (e) {
+        return e.fase == faseAtual;
+    })
+    charada = charada[0];
+
+    //atualizando a imagem
+    let imagemDaFase = document.getElementById('imagem');
+    imagemDaFase.setAttribute('src', charada.imagem)
+    imagemDaFase.setAttribute('alt', charada.alt)
+
+    // atualizando o texto
+    let textoDaFase = document.getElementById('texto');
+    textoDaFase.innerHTML = charada.texto;
+    let dicaDaFase = document.getElementById('dica');
+    dicaDaFase.innerHTML = charada.dica;
+
+    let tituloDaFase = document.getElementById('titulo');
+    tituloDaFase.innerHTML = charada.titulo;
+
+    return charada;
+}
+
+let faseAtual = 3;
+let charada = atualizaPagina(faseAtual);
+
+//acionando chamada de resposta com a tecla Enter
+let respostaDoUsuario = document.getElementById('inputResposta');
+
+respostaDoUsuario.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        confereResp();
+    }
+});
+
+function confereResp() {
+    let resposta = document.getElementById('inputResposta').value;
+    charada = confereResposta(resposta, charada);
+}
+
+/* PROXIMOS PASSOS */ 
+
+//pegar o array e colocar num arquivo json separado
+//adicionar a biblioteca axios
+//onde hoje a gente define a variavel faz com que o axios busque esse valor no json
