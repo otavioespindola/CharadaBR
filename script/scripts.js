@@ -68,7 +68,7 @@ function LimpaResposta() {
 
 function ConfereResposta(charada, respostaDoUsuario) {
     LimpaResposta();
-    if (respostaDoUsuario.toLowerCase() === charada.resposta.toLowerCase()){
+    if (respostaDoUsuario.toLowerCase() === charada.resposta.toLowerCase()){ // toLowerCase usado para fazer resposta ser case insentive
         return CarregaPagina(charada.proximaFase)
     } else {
         alert("Resposta errada, tente outra vez.");
@@ -76,18 +76,21 @@ function ConfereResposta(charada, respostaDoUsuario) {
     }  
 }
 
+function confereResp() {
+    let resposta = document.getElementById('inputResposta').value;
+    charada = confereResposta(charada, resposta);
+}
 
-let faseAtual = 3;
-CarregaPagina(faseAtual);
+
+let faseAtual = 1;
+let charada = CarregaPagina(faseAtual)
 
 
-
-
+//let respostaDoUsuario = document.getElementById("inputResposta").value;
 
 // -----------------------------------------
 
 // //declaração de variável fora das funções para que ela possa ser usada em to escopo do código
-// let respostaDoUsuario = document.getElementById("inputResposta").value;
 
 //acionando chamada de resposta com a tecla Enter
 // function Enter(respostaDoUsuario){
