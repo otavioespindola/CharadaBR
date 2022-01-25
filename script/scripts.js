@@ -1,3 +1,7 @@
+
+// import axios from "axios"
+
+
 function CarregaPagina(faseAtual) {
     let arrayDeCharadas = [
         {
@@ -76,30 +80,24 @@ function ConfereResposta(charada, respostaDoUsuario) {
     }  
 }
 
-function confereResp() {
+function PegaResposta() {
     let resposta = document.getElementById('inputResposta').value;
-    charada = confereResposta(charada, resposta);
+    charada = ConfereResposta(charada, resposta);
 }
 
-
 let faseAtual = 1;
-let charada = CarregaPagina(faseAtual)
+let charada = CarregaPagina(faseAtual);
+
+// Para conferir a resposta com o Enter
+let inputDeResposta = document.getElementById("inputResposta");
+inputDeResposta.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            PegaResposta( );
+        }
+})
+//
 
 
-//let respostaDoUsuario = document.getElementById("inputResposta").value;
-
-// -----------------------------------------
-
-// //declaração de variável fora das funções para que ela possa ser usada em to escopo do código
-
-//acionando chamada de resposta com a tecla Enter
-// function Enter(respostaDoUsuario){
-//     respostaDoUsuario.addEventListener("keypress", (e) => {
-//     if (e.key === "Enter") {
-//         confereResposta(charada);
-//     }
-// });
-// }
 
 
 
