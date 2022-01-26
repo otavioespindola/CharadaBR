@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt_br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Import do Bootstrap NPM -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Import do CSS local -->
     <link rel="stylesheet" href="./css/estilo.css">
+    
+
     <title>Charada BR</title>
 </head>
 
 <body>
     <!-- Colocando todo o conteúdo em um container para ser responsível com as classes do Bootstrap  -->
     <div class="container container-fluid ">
-        <!-- título principal -->
+        <!-- título -->
         <h1 id="titulo" class="tituloPrincipal"></h1>
 
         <div class="card" style="width: 100%">
@@ -23,18 +27,22 @@
             <figure class="figure">
                 <img id="imagem" src="#" class="figure-img img-fluid rounded" alt="">
                 <figcaption id="dica" class="figure-caption">Tente no diminutivo</figcaption>
-            </figure>      
+            </figure>
             <!-- corpo  -->
-            <div class="card-body ">              
-              <p id="texto" class="card-text"></p>              
-              <input class="form-control mb-3" id="inputResposta" type="text" placeholder="Digite sua resposta aqui" 
-                aria-label="area de resposta" />
-              <a href="#" class="btn btn-primary" onclick="PegaResposta()" >Responder</a>
+            <div class="card-body ">
+                <p id="texto" class="card-text"></p>
+                <!-- form  -->
+                <input class="form-control mb-3" id="inputResposta" type="text" placeholder="Digite sua resposta aqui"
+                    aria-label="area de resposta" />
+                <!-- botão -->
+                <a href="#" class="btn btn-primary" onclick="PegaResposta()">Responder</a>
             </div>
         </div>
     </div>
-
+    <!-- import do AXIOS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- import do script local -->
     <script type="text/javascript" src="./script/scripts.js"></script>
-    
 </body>
+
 </html>

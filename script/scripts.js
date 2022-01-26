@@ -1,7 +1,3 @@
-
-// import axios from "axios"
-
-
 function CarregaPagina(faseAtual) {
     let arrayDeCharadas = [
         {
@@ -48,7 +44,6 @@ function CarregaPagina(faseAtual) {
     AtualizaImagem(charada.imagem, charada.alt);
     AtualizaTexto(charada.titulo, charada.texto, charada.dica);
     return charada;
-
 }
 function AtualizaImagem(source, txtAlt) {
     let img = document.getElementById('imagem');
@@ -64,12 +59,10 @@ function AtualizaTexto(txtTitulo, txtPergunta, txtdica){
     perguntaDaFase.innerHTML = txtPergunta
     dicaDaFase.innerHTML = txtdica;
 }
-function LimpaResposta() {
-    let inputDeRespostaDoUsuario = document.getElementById('inputResposta')
-    inputDeRespostaDoUsuario.value = "";
-    inputDeRespostaDoUsuario.focus();
+function PegaResposta() {
+    let resposta = document.getElementById('inputResposta').value;
+    charada = ConfereResposta(charada, resposta);
 }
-
 function ConfereResposta(charada, respostaDoUsuario) {
     LimpaResposta();
     if (respostaDoUsuario.toLowerCase() === charada.resposta.toLowerCase()){ // toLowerCase usado para fazer resposta ser case insentive
@@ -79,14 +72,15 @@ function ConfereResposta(charada, respostaDoUsuario) {
         return charada;
     }  
 }
-
-function PegaResposta() {
-    let resposta = document.getElementById('inputResposta').value;
-    charada = ConfereResposta(charada, resposta);
+function LimpaResposta() {
+    let inputDeRespostaDoUsuario = document.getElementById('inputResposta')
+    inputDeRespostaDoUsuario.value = "";
+    inputDeRespostaDoUsuario.focus();
 }
-
+//carrega fase atual
 let faseAtual = 1;
 let charada = CarregaPagina(faseAtual);
+//--
 
 // Para conferir a resposta com o Enter
 let inputDeResposta = document.getElementById("inputResposta");
@@ -95,7 +89,16 @@ inputDeResposta.addEventListener("keypress", (e) => {
             PegaResposta( );
         }
 })
-//
+//--
+
+// usando axios para ler o Jason
+
+async function PegaDadosDoArray(){
+    let r = await axios.get('../charadas.json', {}).then(response => {return response.data} );
+    return r;
+}
+let teste = PegaDadosDoArray();
+console.log(teste)
 
 
 
