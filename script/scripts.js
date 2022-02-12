@@ -28,16 +28,17 @@ function AtualizaTexto(txtTitulo, txtPergunta, txtdica) {
     dicaDaFase.innerHTML = txtdica;
 }
 function AdicionarListeners(charada){
-    document.getElementById("inputResposta")
-    .addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-            ConfereResposta(charada);
-        }
-    });
-    document.getElementById("botao-confirmar")
-    .addEventListener("click", (e) => {
-        ConfereResposta(charada);
-    } ) 
+
+    let inputDoUsuario = document.getElementById("inputResposta");
+    inputDoUsuario.onkeydown = undefined;
+    inputDoUsuario.onkeydown = (e) => { if (e.key === "Enter") {ConfereResposta(charada);}} 
+
+    let btnResponder = document.getElementById("botao-confirmar");
+    btnResponder.onclick = undefined;
+    btnResponder.onclick = (e) => {ConfereResposta(charada)};
+    // .addEventListener("click", (e) => {
+    //     ConfereResposta(charada);
+    // } ) 
 }
 function LimpaResposta() {
     let inputDeRespostaDoUsuario = document.getElementById('inputResposta')
@@ -65,9 +66,6 @@ if (!localStorage.faseAtual) {
 BuscaCharada(localStorage.faseAtual).then((charada) => {
     CarregaPagina(charada);
 })
-
-
-
 
 
 
